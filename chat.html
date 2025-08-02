@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evade.ai</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+</head>
+<body style="background:#0f0f0f; color:white; display:flex; align-items:center; justify-content:center; height:100vh;">
+  <div id="status">Loading...</div>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDANNEVnwLj2seI4VauKJ-imxNuAiM_a-U",
+      authDomain: "evade-c74a7.firebaseapp.com",
+      projectId: "evade-c74a7",
+      storageBucket: "evade-c74a7.appspot.com",
+      messagingSenderId: "339797063702",
+      appId: "1:339797063702:web:sampleappid"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        window.location.href = "chat.html";
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+</body>
+</html>
