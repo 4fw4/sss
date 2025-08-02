@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Evade.ai</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>Login</h2>
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+      <a href="signup.html">Don't have an account? Sign up</a>
+    </div>
+  </div>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDANNEVnwLj2seI4VauKJ-imxNuAiM_a-U",
+      authDomain: "evade-c74a7.firebaseapp.com",
+      projectId: "evade-c74a7",
+      storageBucket: "evade-c74a7.appspot.com",
+      messagingSenderId: "339797063702",
+      appId: "1:339797063702:web:sampleappid"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function login() {
+      const email = document.getElementById("email").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      auth.signInWithEmailAndPassword(email, pass)
+        .then(() => {
+          localStorage.setItem("loggedIn", email);
+          window.location.href = "index.html";
+        })
+        .catch(err => alert(err.message));
+    }
+  </script>
+</body>
+</html>
